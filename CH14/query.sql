@@ -35,9 +35,12 @@ CREATE TABLE Pelajar (
     nim varchar(100) NOT NULL, 
     idjurusan varchar(100) NOT NULL, 
     idmatkul varchar(100) NOT NULL, 
+    namajurusan varchar(100) NOT NULL,
     FOREIGN KEY(nim) REFERENCES Mahasiswa(nim), 
     FOREIGN KEY(idjurusan) REFERENCES Jurusan(idjurusan), 
-    FOREIGN KEY(idmatkul) REFERENCES MataKuliah(idmatkul));
+    FOREIGN KEY(idmatkul) REFERENCES MataKuliah(idmatkul),
+    FOREIGN KEY(namajurusan) REFERENCES Jurusan(nama)
+);
 
 INSERT INTO Mahasiswa VALUES('A0001','Salsabilla Syifatunnisa','Padang'),
                             ('A0002','Muhammad Fajar Al-Faruq','Bandung'),
@@ -61,7 +64,7 @@ INSERT INTO Pengajar (iddosen, idjurusan, idmatkul) VALUES('0001A', '00001', 'A0
                                                           ('0003A', '00003', 'A003'),
                                                           ('0002A', '00002', 'A002');
 
-INSERT INTO Pelajar (nim, idjurusan, idmatkul) VALUES('A0001', '00001', 'A001'),
-                                                     ('A0002', '00002', 'A002'),
-                                                     ('A0003', '00003', 'A003'),
-                                                     ('A0002', '00002', 'A002');
+INSERT INTO Pelajar (nim, idjurusan, idmatkul, namajurusan) VALUES('A0001', '00001', 'A001','Informatika'),
+                                                           ('A0002', '00002', 'A002','Seni dan Desain'), 
+                                                           ('A0003', '00003', 'A003','Hukum'), 
+                                                           ('A0002', '00002', 'A002','Seni dan Desain');
