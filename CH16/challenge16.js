@@ -34,6 +34,52 @@ class CarFactory {
         this.cars = [];
     }
 
+    static serialNumber1() {
+        let digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        let serial1 = "";
+        for (let i = 0; i < 9; i++) {
+            let rand = Math.floor(Math.random() * digits.length)
+            serial1 += digits[rand];
+        }
+        return serial1;
+    }
+    static serialNumber2() {
+        let digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        let serial2 = "";
+        for (let i = 0; i < 5; i++) {
+            let rand = Math.floor(Math.random() * digits.length)
+            serial2 += digits[rand];
+        }
+        return serial2;
+    }
+    static serialNumber3() {
+        let digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        let serial3 = "";
+        for (let i = 0; i < 5; i++) {
+            let rand = Math.floor(Math.random() * digits.length)
+            serial3 += digits[rand];
+        }
+        return serial3;
+    }
+    static serialNumber4() {
+        let digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        let serial4 = "";
+        for (let i = 0; i < 5; i++) {
+            let rand = Math.floor(Math.random() * digits.length)
+            serial4 += digits[rand];
+        }
+        return serial4;
+    }
+    static serialNumber5() {
+        let digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        let serial5 = "";
+        for (let i = 0; i < 13; i++) {
+            let rand = Math.floor(Math.random() * digits.length)
+            serial5 += digits[rand];
+        }
+        return serial5;
+    }
+
     static random() {
         return Math.floor(Math.random() * 10) + 1;
     }
@@ -52,13 +98,13 @@ class CarFactory {
     guaranteeSimulation(simulationYear) {
         console.log(`Hasil simulasi garansi semua mobil pada tahun ${simulationYear}:\n`);
         this.cars.forEach((item, index) => {
-            let masasih = item.year + item.warranty
-            if (simulationYear > masasih) {
+            let garansi = item.year + item.warranty
+            if (simulationYear > garansi) {
                 console.log(`status on ${simulationYear} this guarantee status is expired`);
                 console.log(`
                 No. ${index + 1} 
                 Varian  : ${item.varian}
-                sn      : 
+                sn      : ${CarFactory.serialNumber1()}-${CarFactory.serialNumber2()}-${CarFactory.serialNumber3()}-${CarFactory.serialNumber4()}-${CarFactory.serialNumber5()}
                 door    : ${item.door}
                 seat    : ${item.seat}
                 Tyre    : ${item.tyre.brand} ${item.tyre.size} inch
@@ -70,7 +116,7 @@ class CarFactory {
                 console.log(`
                 No. ${index + 1} 
                 Varian  : ${item.varian}
-                sn      : 
+                sn      : ${CarFactory.serialNumber1()}-${CarFactory.serialNumber2()}-${CarFactory.serialNumber3()}-${CarFactory.serialNumber4()}-${CarFactory.serialNumber5()}
                 door    : ${item.door}
                 seat    : ${item.seat}
                 Tyre    : ${item.tyre.brand} ${item.tyre.size} inch
@@ -87,7 +133,7 @@ class CarFactory {
             console.log(`
                 No. ${index + 1} 
                 Varian  : ${car.varian}
-                sn      : 
+                sn      : ${CarFactory.serialNumber1()}-${CarFactory.serialNumber2()}-${CarFactory.serialNumber3()}-${CarFactory.serialNumber4()}-${CarFactory.serialNumber5()}
                 door    : ${car.door}
                 seat    : ${car.seat}
                 Tyre    : ${car.tyre.brand} ${car.tyre.size} inch
