@@ -1,0 +1,16 @@
+{
+  "name": "ch17",
+  "version": "1.0.0",
+  "description": "coba import export",
+  "main": "kalkulator.js",
+  "type": "module",
+  "scripts": {
+    "test": "node kalkulator.js"
+  },
+  "keywords": [
+    "import",
+    "export"
+  ],
+  "author": "fajar",
+  "license": "ISC"
+}
