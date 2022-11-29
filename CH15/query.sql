@@ -106,7 +106,7 @@ INSERT INTO NilaiMahasiswa(nim,jurusan,matkul,SKS) VALUES('A0001','Hukum','Matem
 
 
 --tampilkan seluruh data mahasiswa beserta nama jurusannya
-SELECT Mahasiswa.nim,nama,umur,alamat, Pelajar.jurusan FROM Mahasiswa INNER JOIN Pelajar ON Mahasiswa.nim = Pelajar.nim;
+SELECT Mahasiswa.nim,nama,umur, Pelajar.jurusan, Mahasiswa.alamat FROM Mahasiswa INNER JOIN Pelajar ON Mahasiswa.nim = Pelajar.nim;
   --atau
 SELECT Mahasiswa.*, Pelajar.jurusan FROM Mahasiswa JOIN Pelajar ON Mahasiswa.nim = Pelajar.nim; 
 
@@ -144,3 +144,7 @@ SELECT * FROM Mahasiswa ORDER BY umur DESC;
 --tampilkan kontrak matakuliah yang harus diulang(nilai D dan E), serta tampilkan data mahasiswa jurusan dan dosen secara lengkap.
 SELECT Dosen.nama, Mahasiswa.nama, NilaiMahasiswa.jurusan, NilaiMahasiswa.nilai FROM Mahasiswa INNER JOIN NilaiMahasiswa ON Mahasiswa.nim = NilaiMahasiswa.nim INNER JOIN Dosen ON Dosen.namamatkul = NilaiMahasiswa.matkul WHERE nilai > 'C';
 --gunakan mode JOIN dan WHERE clause(solusi terdiri dari 2 syntax Sql )
+
+
+select Kontrak.id, Mahasiswa.nim, Mahasiswa.nama, Matakuliah.nama, Dosen.nama, Kontrak.Nilai from Mahasiswa join Kontrak on Kontrak.nim = Mahasiswa.nim join Matakuliah on Kontrak.kodematkul = MataKuliah.kode join Dosen on Kontrak.nip = Dosen.nip;
+select Kontrak.id, Mahasiswa.nim, Mahasiswa.nama, Matakuliah.nama, Dosen.nama, Kontrak.Nilai from Mahasiswa join Kontrak on Kontrak.nim = Mahasiswa.nim join Matakuliah on Kontrak.kodematkul = MataKuliah.kode join Dosen on Kontrak.nip = Dosen.nip
