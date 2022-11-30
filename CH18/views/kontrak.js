@@ -12,6 +12,5 @@ export function daftarKontrak(rows) {
     })
 
     console.log(table.toString());
-    console.log("===================================================================\n"),
         kelasKontrak.menuKontrak();
 }

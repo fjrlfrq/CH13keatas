@@ -5,6 +5,7 @@ import Options from './options.js';
 import { rl } from '../test2.js';
 export default class kelasKontrak {
     static daftar() {
+        console.log("===================================================================");
         console.log("Silahkan pilih opsi dibawah ini:");
         console.log('[1] Daftar Kontrak');
         console.log('[2] Cari Kontrak');
@@ -12,6 +13,7 @@ export default class kelasKontrak {
         console.log('[4] Hapus Kontrak');
         console.log('[5] Update Nilai');
         console.log('[6] kembali');
+        console.log("===================================================================");
     }
 
     static menuKontrak() {

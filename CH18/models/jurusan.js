@@ -14,19 +14,20 @@ export function readJ(callback) {
 }
 
 export function searchJ() {
+    console.log("===================================================================");
     rl.question(`Masukkan Kode Jurusan:`, (line) => {
         db.get(`SELECT * FROM Jurusan WHERE idjurusan = "${line}"`, (err, row) => {
             if (err) return console.log(`Jurusan dengan kode ${line}, tidak terdaftar`),
                 kelasJurusan.cariJurusan();
             console.log(`Detail Jurusan dengan kode '${line}' :`);
             console.log(`Kode Jurusan: ${row.idjurusan}\nNama Jurusan: ${row.jurusan}`);
-            console.log("\n===================================================================\n"),
                 kelasJurusan.menuJurusan();
         });
     })
 }
 
 export function tambahJ() {
+    console.log("===================================================================");
     console.log('Lengkapi data di bawah ini :');
     rl.question("Kode Jurusan :", (line) => {
         if (line) {
@@ -34,7 +35,6 @@ export function tambahJ() {
                 if (line2) {
                     db.run(`INSERT INTO Jurusan (idjurusan,jurusan) Values ('${line}','${line2}')`)
                     console.log("Jurusan telah ditambahkan ke database");
-                    console.log("===================================================================\n"),
                         kelasJurusan.menuJurusan();
                 }
             })
@@ -43,12 +43,12 @@ export function tambahJ() {
 }
 
 export function hapusJ() {
+    console.log("===================================================================");
     rl.question("Masukkan Kode Jurusan :", (line) => {
         if (line) {
             db.run(`DELETE FROM Jurusan WHERE idjurusan= "${line}"`)
             console.log(`Data Jurusan ${line}, telah dihapus`);
-            console.log("===================================================================\n"),
-                kelasMahasiswa.menuMahasiswa();
+                kelasJurusan.menuJurusan();
         }
     })
 }

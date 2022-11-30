@@ -1,11 +1,5 @@
 import Options from './controller/options.js';
 
-import sqlite3 from 'sqlite3';
-import path from 'path';
-import Table from 'cli-table';
-const pathDB = path.join(path.resolve(), 'db', 'university.db');
-const db = new sqlite3.Database(pathDB);
-
 import readline from 'node:readline';
 
 export const rl = readline.createInterface({
@@ -22,6 +16,19 @@ export default class Login {
         console.log("===================================================================");
         console.log("Welcome to Universitas Pendidikan Indonesia\nJl. Setiabudhi No. 255");
         console.log("===================================================================");
+    }
+
+    static loginlogout() {
+        rl.question("Login/Logout:", (line) => {
+            if (line.toLowerCase() == "login") {
+                Login.akun();
+            } else if (line.toLowerCase() == "logout") {
+                rl.close();
+                process.exit(0);
+            } else {
+                Login.loginlogout();
+            }
+        })
     }
 
     static akun() {
@@ -47,6 +54,7 @@ export default class Login {
     }
 
     static admin() {
+        console.log("===================================================================");
         rl.question(`welcome, Fajar. Your access level is:`, (line3) => {
             if (line3 == "ADMIN") {
                 Login.pilihan();
@@ -59,7 +67,7 @@ export default class Login {
 
     static Masuk() {
         Login.salam();
-        Login.akun();
+        Login.loginlogout();
     }
 }
 

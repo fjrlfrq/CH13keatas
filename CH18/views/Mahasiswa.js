@@ -12,5 +12,5 @@ export function daftarmahasiswa(rows) {
         table.push([item.nim, item.mahasiswa, item.Ttl, item.alamat, item.idjurusan, item.jurusan]);
     });
     console.log(table.toString());
-    kelasMahasiswa.menuMahasiswa();
+    // kelasMahasiswa.menuMahasiswa();
 }

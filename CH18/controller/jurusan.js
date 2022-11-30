@@ -5,17 +5,19 @@ import Options from './options.js';
 import { rl } from '../test2.js';
 export default class kelasJurusan {
     static daftar() {
+        console.log("===================================================================");
         console.log("Silahkan pilih opsi dibawah ini:");
         console.log('[1] Daftar Jurusan');
         console.log('[2] Cari Jurusan');
         console.log('[3] Tambah Jurusan');
         console.log('[4] Hapus Jurusan');
         console.log('[5] kembali');
+        console.log("===================================================================");
     }
 
     static menuJurusan() {
         kelasJurusan.daftar();
-        rl.question("masukkan nomor:", (line) => {
+        rl.question("masukkan salah satu nomor dari opsi di atas:", (line) => {
             switch (line) {
                 case "1":
                     readJ(function (data) {

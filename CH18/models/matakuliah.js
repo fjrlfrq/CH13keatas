@@ -14,6 +14,7 @@ export function cariMK(callback) {
 }
 
 export function tambahMK() {
+    console.log("===================================================================");
     console.log('Lengkapi data di bawah ini :');
     rl.question("Masukkan Kode Mata Kuliah:", (line) => {
         if (line) {
@@ -33,11 +34,11 @@ export function tambahMK() {
 }
 
 export function hapusMK() {
+    console.log("===================================================================");
     rl.question("Masukkan Kode Mata Kuliah :", (line) => {
         if (line) {
             db.run(`DELETE FROM MataKuliah WHERE kode="${line}"`),
                 console.log(`Data MataKuliah ${line}, telah dihapus`);
-            console.log("===================================================================\n"),
                 kelasMataKuliah.menuMataKuliah();
         }
     })

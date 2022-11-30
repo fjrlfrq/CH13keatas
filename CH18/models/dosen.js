@@ -14,6 +14,7 @@ export function readD(callback) {
 }
 
 export function tambahD() {
+    console.log("===================================================================");
     console.log('Lengkapi data di bawah ini :');
     rl.question("Masukkan NIP:", (line) => {
         if (line) {
@@ -29,11 +30,11 @@ export function tambahD() {
 }
 
 export function hapusD() {
+    console.log("===================================================================");
     rl.question("Masukkan NIP:", (line) => {
         if (line) {
             db.run(`DELETE FROM Dosen WHERE nip="${line}"`),
                 console.log(`Data Dosen ${line}, telah dihapus`);
-            console.log("===================================================================\n"),
                 kelasDosen.menuDosen();
         }
     })

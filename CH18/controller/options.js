@@ -9,6 +9,7 @@ import kelasDosen from './dosen.js';
 
 export default class Options {
     static daftar() {
+        console.log("===================================================================");
         console.log("Silahkan pilih opsi dibawah ini:");
         console.log('[1] Mahasiswa');
         console.log('[2] Jurusan');
@@ -16,6 +17,7 @@ export default class Options {
         console.log('[4] Mata Kuliah');
         console.log('[5] Kontrak');
         console.log('[6] Keluar');
+        console.log("===================================================================");
     }
 
     static menu() {

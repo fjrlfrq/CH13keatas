@@ -5,11 +5,13 @@ import Options from './options.js';
 import { rl } from '../test2.js';
 export default class kelasDosen {
     static daftar() {
+        console.log("===================================================================");
         console.log("Silahkan pilih opsi dibawah ini:");
         console.log('[1] Daftar Dosen');
         console.log('[2] Tambah Dosen');
         console.log('[3] Hapus Dosen');
         console.log('[4] kembali');
+        console.log("===================================================================");
     }
 
     static menuDosen() {

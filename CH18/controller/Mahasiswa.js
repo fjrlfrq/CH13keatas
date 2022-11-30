@@ -3,14 +3,24 @@ import { daftarmahasiswa } from '../views/Mahasiswa.js'
 import Options from './options.js';
 
 import { rl } from '../test2.js';
+
+export function daftarM() {
+    read(function (data) {
+        daftarmahasiswa(data);
+
+        kelasMahasiswa.menuMahasiswa();
+    })
+}
 export default class kelasMahasiswa {
     static daftar() {
+        console.log("===================================================================");
         console.log("Silahkan pilih opsi dibawah ini:");
         console.log('[1] Daftar Mahasiswa');
         console.log('[2] Cari Mahasiswa');
         console.log('[3] Tambah Mahasiswa');
         console.log('[4] Hapus Mahasiswa');
         console.log('[5] kembali');
+        console.log("===================================================================");
     }
 
     static menuMahasiswa() {
@@ -18,9 +28,7 @@ export default class kelasMahasiswa {
         rl.question("Masukkan salah satu nomor dari opsi di atas:", (line) => {
             switch (line) {
                 case "1":
-                    read(function (data) {
-                        daftarmahasiswa(data);
-                    })
+                    daftarM();
                     break;
                 case "2":
                     seacrh(function (data) {

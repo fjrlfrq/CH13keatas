@@ -3,6 +3,7 @@ import path from 'path';
 const pathDB = path.join(path.resolve(), 'db', 'university.db');
 const db = new sqlite3.Database(pathDB);
 
+import Table from 'cli-table';
 import { rl } from '../test2.js';
 import kelasKontrak from "../controller/kontrak.js";
 
@@ -27,13 +28,13 @@ export function cariK() {
             })
 
             console.log(table.toString());
-            console.log("===================================================================\n")
             kelasKontrak.menuKontrak();
         });
     })
 }
 
 export function tambahK() {
+    console.log("===================================================================");
     rl.question("Masukkan NIM:", (line) => {
         if (line) {
             rl.question("Masukkan Nama:", (line2) => {
@@ -72,6 +73,7 @@ export function tambahK() {
 }
 
 export function hapusK() {
+    console.log("===================================================================");
     rl.question("Masukkan ID :", (line) => {
         if (line == "") {
             rl.question("apakah anda tidak jadi menghapus ? y/n \n", (line2) => {
@@ -83,7 +85,6 @@ export function hapusK() {
         else if (line) {
             db.run(`DELETE FROM Kontrak WHERE id=${line}`)
             console.log(`Data Mahasiswa ${line}, telah dihapus`);
-            console.log("===================================================================\n"),
                 kelasKontrak.menuKontrak();
         }
 
@@ -91,15 +92,18 @@ export function hapusK() {
 }
 
 export function updateK() {
+    console.log("===================================================================");
     rl.question("Masukkan NIM Mahasiswa:", (line) => {
         if (line == "") { console.log("gagal\n"); kelasKontrak.updateKontrak(); }
         else if (line) {
+            console.log("===================================================================");
             rl.question("Masukkan id yang akan dirubah nilai :", (line2) => {
                 if (line2 == "") { console.log("gagal\n"); kelasKontrak.updateKontrak(); }
                 else if (line2) {
                     rl.question("tulis nilai yang baru :", (line3) => {
                         if (line3 == "") { console.log("gagal\n"); kelasKontrak.updateKontrak(); }
                         else if (line3) {
+                            console.log("===================================================================");
                             rl.question("anda yakin ingin mengubah? y/n: ", (line4) => {
                                 if (line4 == "y") {
                                     db.run(`UPDATE kontrak set Nilai = "${line3}" where id = "${line2}";`)

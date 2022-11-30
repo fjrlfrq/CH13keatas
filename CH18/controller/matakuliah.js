@@ -6,11 +6,13 @@ import { rl } from '../test2.js';
 
 export default class kelasMataKuliah {
     static daftar() {
+        console.log("===================================================================");
         console.log("Silahkan pilih opsi dibawah ini:");
         console.log('[1] Daftar Mata Kuliah');
         console.log('[2] Tambah Mata Kuliah');
         console.log('[3] Hapus Mata Kuliah');
         console.log('[4] kembali');
+        console.log("===================================================================");
     }
 
     static menuMataKuliah() {
