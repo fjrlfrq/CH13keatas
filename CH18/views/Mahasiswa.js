@@ -1,6 +1,6 @@
 import Table from 'cli-table';
 
-import kelasMahasiswa from "../test.js";
+import kelasMahasiswa from "../test2.js";
 
 export function daftarmahasiswa(rows) {
     var table = new Table({

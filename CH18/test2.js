@@ -1,12 +1,5 @@
-// import { showMahasiswa } from './controller/Mahasiswa.js';
-// const sqlite3 = require('sqlite3').verbose();
-// const path = require('path');
-// const Table = require('cli-table')
-// const pathDB = path.join(__dirname, 'db', 'university.db')
-// const db = new sqlite3.Database(pathDB);
-
 import { cariM, daftarM, hapusM, tambahM } from './controller/Mahasiswa.js';
-import { daftarJ } from './controller/jurusan.js';
+// import { daftarJ } from './controller/jurusan.js';
 
 import sqlite3 from 'sqlite3';
 import path from 'path';
@@ -153,8 +146,9 @@ export default class kelasMahasiswa {
     }
 }
 
-kelasMahasiswa.menuMahasiswa();
-export class kelasJurusan {
+// kelasMahasiswa.menuMahasiswa();
+
+class kelasJurusan {
     static daftar() {
         console.log("Silahkan pilih opsi dibawah ini:");
         console.log('[1] Daftar Jurusan');
@@ -169,8 +163,7 @@ export class kelasJurusan {
         rl.question("masukkan nomor:", (line) => {
             switch (line) {
                 case "1":
-                    daftarJ();
-                    // kelasJurusan.daftarJurusan();
+                    kelasJurusan.daftarJurusan();
                     break;
                 case "2":
                     kelasJurusan.cariJurusan();
@@ -191,22 +184,22 @@ export class kelasJurusan {
         })
     }
 
-    // static daftarJurusan() {
-    //     db.all('SELECT * FROM Jurusan', (err, rows) => {
-    //         if (err) return console.log('gagal ambil data', err)
-    //         var table = new Table({
-    //             head: ['Kode Jurusan', 'Nama Jurusan']
-    //             , colWidths: [15, 30]
-    //         });
+    static daftarJurusan() {
+        db.all('SELECT * FROM Jurusan', (err, rows) => {
+            if (err) return console.log('gagal ambil data', err)
+            var table = new Table({
+                head: ['Kode Jurusan', 'Nama Jurusan']
+                , colWidths: [15, 30]
+            });
 
-    //         rows.forEach((item) => {
-    //             table.push([item.idjurusan, item.jurusan]);
-    //         })
+            rows.forEach((item) => {
+                table.push([item.idjurusan, item.jurusan]);
+            })
 
-    //         console.log(table.toString());
-    //         kelasJurusan.menuJurusan();
-    //     })
-    // }
+            console.log(table.toString());
+            kelasJurusan.menuJurusan();
+        })
+    }
 
     static cariJurusan() {
         rl.question(`Masukkan Kode Jurusan:`, (line) => {
@@ -249,7 +242,7 @@ export class kelasJurusan {
     }
 }
 
-// kelasJurusan.menuJurusan();
+kelasJurusan.menuJurusan();
 
 class kelasKontrak {
     static daftar() {
@@ -325,7 +318,7 @@ class kelasKontrak {
 
                 console.log(table.toString());
                 console.log("===================================================================\n")
-                // kelasKontrak.menuKontrak();
+                kelasKontrak.menuKontrak();
             });
         })
     }
