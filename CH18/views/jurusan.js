@@ -1,15 +1,16 @@
 import Table from 'cli-table';
 
-export function drawJurusan(rows){
-var table = new Table({
-    head: ['Kode Jurusan', 'Nama Jurusan']
-    , colWidths: [15, 20]
-});
+import kelasJurusan from "../test.js";
 
-rows.forEach((item) => {
-table.push([item.idjurusan, item.nama]);
-})
+export function daftarJurusan(rows) {
+    var table = new Table({
+        head: ['Kode Jurusan', 'Nama Jurusan']
+        , colWidths: [15, 30]
+    });
 
-console.log(table.toString());
+    rows.forEach((item) => {
+        table.push([item.idjurusan, item.jurusan]);
+    });
+    console.log(table.toString());
+    kelasJurusan.menuJurusan();
 }
-

@@ -1,9 +1,8 @@
-import { read } from '../models/jurusan.js'
-import { drawJurusan } from '../views/jurusan.js'
+import { readJ } from '../models/jurusan.js'
+import { daftarJurusan } from '../views/jurusan.js'
 
-//SELECT MAHASISWA
-export function showJurusan() {
-    read(function (data) { //anonymous function = function no name
-        drawJurusan(data);
+export function daftarJ() {
+    readJ(function (data) {
+        daftarJurusan(data);
     })
 }

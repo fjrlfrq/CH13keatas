@@ -5,7 +5,8 @@
 // const pathDB = path.join(__dirname, 'db', 'university.db')
 // const db = new sqlite3.Database(pathDB);
 
-import { daftarM } from './controller/Mahasiswa.js';
+import { cariM, daftarM, hapusM, tambahM } from './controller/Mahasiswa.js';
+import { daftarJ } from './controller/jurusan.js';
 
 import sqlite3 from 'sqlite3';
 import path from 'path';
@@ -15,7 +16,7 @@ const db = new sqlite3.Database(pathDB);
 
 import readline from 'node:readline';
 
-const rl = readline.createInterface({
+export const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
@@ -70,7 +71,7 @@ class Login {
     }
 }
 
-Login.Masuk();
+// Login.Masuk();
 
 class Options {
     static daftar() {
@@ -115,7 +116,7 @@ class Options {
 // Options.menu();
 
 
-class kelasMahasiswa {
+export default class kelasMahasiswa {
     static daftar() {
         console.log("Silahkan pilih opsi dibawah ini:");
         console.log('[1] Daftar Mahasiswa');
@@ -131,16 +132,15 @@ class kelasMahasiswa {
             switch (line) {
                 case "1":
                     daftarM();
-                    // kelasMahasiswa.menuMahasiswa();
                     break;
                 case "2":
-                    kelasMahasiswa.carimahasiswa();
+                    cariM();
                     break;
                 case "3":
-                    kelasMahasiswa.tambahmahasiswa();
+                    tambahM();
                     break;
                 case "4":
-                    kelasMahasiswa.hapusmahasiswa();
+                    hapusM();
                     break;
                 case "5":
                     Options.menu();
@@ -151,67 +151,10 @@ class kelasMahasiswa {
             }
         })
     }
-
-    static carimahasiswa() {
-        rl.question(`Masukkan NIM Mahasiswa:`, (line) => {
-            db.get(`SELECT * FROM Mahasiswa WHERE nim = ${line}`, (err, row) => {
-                if (err) return console.log(`Mahasiswa dengan nim ${line}, tidak terdaftar`),
-                    console.log("==================================================================="),
-                    kelasMahasiswa.menuMahasiswa();
-                console.log(`Detail mahasiswa dengan NIM '${line}' :`);
-                console.log(`NIM     : ${row.nim}\nNama    : ${row.mahasiswa}\nAlamat  : ${row.alamat}\nJurusan : ${row.jurusan}`);
-                console.log("===================================================================\n"),
-                    kelasMahasiswa.menuMahasiswa();
-            });
-        })
-    }
-
-    static tambahmahasiswa() {
-        console.log('Lengkapi data di bawah ini :');
-        rl.question("NIM          :", (line) => {
-            if (line) {
-                rl.question("Nama         :", (line2) => {
-                    if (line2) {
-                        rl.question("Tanggal Lahir:", (line3) => {
-                            if (line3) {
-                                rl.question("Alamat       :", (line4) => {
-                                    if (line4) {
-                                        rl.question("Kode Jurusan :", (line5) => {
-                                            if (line5) {
-                                                rl.question("Jurusan      :", (line6) => {
-                                                    if (line6) {
-                                                        db.run(`INSERT INTO Mahasiswa (nim,mahasiswa,Ttl,alamat,idjurusan,jurusan) Values ('${line}','${line2}','${line3}}','${line4}','${line5}','${line6}')`)
-                                                        console.log("Mahasiswa telah ditambahkan");
-                                                        kelasMahasiswa.daftarmahasiswa();
-                                                    }
-                                                })
-                                            }
-                                        })
-                                    }
-                                })
-                            }
-                        })
-                    }
-                })
-            }
-        })
-    }
-
-    static hapusmahasiswa() {
-        rl.question("Masukkan NIM Mahasiswa :", (line) => {
-            if (line) {
-                db.run(`DELETE FROM Mahasiswa WHERE nim=${line}`)
-                console.log(`Data Mahasiswa ${line}, telah dihapus`);
-                console.log("===================================================================\n"),
-                    kelasMahasiswa.menuMahasiswa();
-            }
-        })
-    }
 }
 
-// kelasMahasiswa.menuMahasiswa();
-
-class kelasJurusan {
+kelasMahasiswa.menuMahasiswa();
+export class kelasJurusan {
     static daftar() {
         console.log("Silahkan pilih opsi dibawah ini:");
         console.log('[1] Daftar Jurusan');
@@ -226,7 +169,8 @@ class kelasJurusan {
         rl.question("masukkan nomor:", (line) => {
             switch (line) {
                 case "1":
-                    kelasJurusan.daftarJurusan();
+                    daftarJ();
+                    // kelasJurusan.daftarJurusan();
                     break;
                 case "2":
                     kelasJurusan.cariJurusan();
@@ -247,22 +191,22 @@ class kelasJurusan {
         })
     }
 
-    static daftarJurusan() {
-        db.all('SELECT * FROM Jurusan', (err, rows) => {
-            if (err) return console.log('gagal ambil data', err)
-            var table = new Table({
-                head: ['Kode Jurusan', 'Nama Jurusan']
-                , colWidths: [15, 30]
-            });
+    // static daftarJurusan() {
+    //     db.all('SELECT * FROM Jurusan', (err, rows) => {
+    //         if (err) return console.log('gagal ambil data', err)
+    //         var table = new Table({
+    //             head: ['Kode Jurusan', 'Nama Jurusan']
+    //             , colWidths: [15, 30]
+    //         });
 
-            rows.forEach((item) => {
-                table.push([item.idjurusan, item.jurusan]);
-            })
+    //         rows.forEach((item) => {
+    //             table.push([item.idjurusan, item.jurusan]);
+    //         })
 
-            console.log(table.toString());
-            kelasJurusan.menuJurusan();
-        })
-    }
+    //         console.log(table.toString());
+    //         kelasJurusan.menuJurusan();
+    //     })
+    // }
 
     static cariJurusan() {
         rl.question(`Masukkan Kode Jurusan:`, (line) => {

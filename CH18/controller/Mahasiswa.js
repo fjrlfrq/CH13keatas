@@ -1,18 +1,26 @@
-// import { read } from '../models/Mahasiswa.js'
-// import { drawMahasiswa } from '../views/Mahasiswa.js'
-
-// //SELECT MAHASISWA
-// export function showMahasiswa() {
-//     read(function (data) { //anonymous function = function no name
-//         drawMahasiswa(data);
-//     })
-// }
-
-import { read } from '../models/Mahasiswa.js'
+import { hapusmahasiswa, read, seacrh, tambahmahasiswa } from '../models/Mahasiswa.js'
 import { daftarmahasiswa } from '../views/Mahasiswa.js'
 
-export function daftarM(){
+export function daftarM() {
     read(function (data) {
         daftarmahasiswa(data);
+    })
+}
+
+export function cariM() {
+    seacrh(function (data){
+        seacrh(data);
+    })
+}
+
+export function tambahM() {
+    tambahmahasiswa(function (data) {
+        tambahmahasiswa(data);
+    })
+}
+
+export function hapusM() {
+    hapusmahasiswa(function (data) {
+        hapusmahasiswa(data);
     })
 }
