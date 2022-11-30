@@ -1,15 +1,18 @@
 import Table from 'cli-table';
 
-export function drawMataKuliah(rows){
-var table = new Table({
-    head: ['Kode Matkul', 'Nama Matkul', 'SKS']
-    , colWidths: [10, 20, 5]
-});
+import kelasMataKuliah from "../controller/matakuliah.js";
 
-rows.forEach((item) => {
-table.push([item.kode, item.nama, item.sks]);
-})
+export function daftarMataKuliah(rows) {
+    var table = new Table({
+        head: ['Kode MatKul', 'Nama Matkul', 'SKS']
+        , colWidths: [15, 20, 8]
+    });
 
-console.log(table.toString());
+    rows.forEach((item) => {
+        table.push([item.kode, item.matkul, item.sks]);
+    })
+
+    console.log(table.toString());
+    kelasMataKuliah.menuMataKuliah();
 }
 

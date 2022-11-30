@@ -4,8 +4,7 @@ const pathDB = path.join(path.resolve(), 'db', 'university.db');
 const db = new sqlite3.Database(pathDB);
 
 import { rl } from '../test2.js';
-import kelasMahasiswa from "../test2.js";
-import { daftarM } from '../controller/Mahasiswa.js';
+import kelasMahasiswa from "../controller/Mahasiswa.js";
 
 export function read(callback) {
     db.all('SELECT * FROM Mahasiswa', (err, rows) => {
@@ -44,7 +43,7 @@ export function tambahmahasiswa() {
                                                 if (line6) {
                                                     db.run(`INSERT INTO Mahasiswa (nim,mahasiswa,Ttl,alamat,idjurusan,jurusan) Values ('${line}','${line2}','${line3}}','${line4}','${line5}','${line6}')`)
                                                     console.log("Mahasiswa telah ditambahkan");
-                                                    daftarM();
+                                                    // daftarM();
                                                 }
                                             })
                                         }

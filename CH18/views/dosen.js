@@ -1,15 +1,16 @@
 import Table from 'cli-table';
 
-export function drawDosen(rows){
-var table = new Table({
-    head: ['NIP', 'Nama Dosen']
-    , colWidths: [10, 15]
-});
+import kelasDosen from "../controller/dosen.js";
 
-rows.forEach((item) => {
-table.push([item.nip, item.nama]);
-})
+export function daftarDosen(rows) {
+    var table = new Table({
+        head: ['NIP', 'Nama']
+        , colWidths: [10, 15]
+    });
 
-console.log(table.toString());
+    rows.forEach((item) => {
+        table.push([item.nip, item.dosen]);
+    })
+    console.log(table.toString());
+    kelasDosen.menuDosen();
 }
-
